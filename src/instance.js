@@ -7,7 +7,7 @@ const deploy = async () => {
 }
 
 const remove = async instanceURL => {
-  const result = await run(`now rm ${instanceURL}`)
+  const result = await run(`now rm ${instanceURL} -y`)
   if (result.stderr) return { error: result.stderr }
   else return { result: true }
 }

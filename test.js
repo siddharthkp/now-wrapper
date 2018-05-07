@@ -26,17 +26,17 @@ const main = async () => {
     .then(body => {
       const expected = fs.readFileSync('./index.html', 'utf8')
       if (body !== expected) throw Error('Something is wrong here')
-      else console.log('Looks good!')
+      else console.log('Step 1: Looks good!')
     })
 
   /* delete instance */
   const result = await remove(instance.url)
-  console.log(result)
 
   /* test result */
   const { status } = fetch(TEST_URL)
+  console.log(status)
   if (status !== 404) throw Error('Something is wrong here')
-  else console.log('Looks good!')
+  else console.log('Step 2: Looks good!')
 }
 
 main()

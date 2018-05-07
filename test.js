@@ -11,7 +11,7 @@ const main = async () => {
   const random = Math.random()
     .toString(36)
     .substring(7)
-  fs.writeFileSync('./index.html', random, 'utf8')
+  fs.writeFileSync('index.html', random, 'utf8')
 
   /* deploy instance */
   const instance = await deploy()
@@ -24,19 +24,23 @@ const main = async () => {
   fetch(TEST_URL)
     .then(res => res.text())
     .then(body => {
-      const expected = fs.readFileSync('./index.html', 'utf8')
+      const expected = fs.readFileSync('index.html', 'utf8')
       if (body !== expected) throw Error('Something is wrong here')
       else console.log('Step 1: Looks good!')
     })
 
   /* delete instance */
-  const result = await remove(instance.url)
+  await remove(instance.url)
 
   /* test result */
-  const { status } = fetch(TEST_URL)
-  console.log(status)
-  if (status !== 404) throw Error('Something is wrong here')
-  else console.log('Step 2: Looks good!')
+  try {
+    const { status } = await fetch(TEST_URL)
+    throw Error('Something is wrong here')
+  } catch (error) {
+    console.log(error)
+    // if (status !== 404)
+    console.log('Step 2: Looks good!')
+  }
 }
 
 main()

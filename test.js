@@ -11,7 +11,7 @@ const main = async () => {
   const random = Math.random()
     .toString(36)
     .substring(7)
-  fs.writeFileSync('index.html', random, 'utf8')
+  fs.writeFileSync('./index.html', random, 'utf8')
 
   /* deploy instance */
   const instance = await deploy()
@@ -24,7 +24,7 @@ const main = async () => {
   fetch(TEST_URL)
     .then(res => res.text())
     .then(body => {
-      const expected = fs.readFileSync('index.html', 'utf8')
+      const expected = fs.readFileSync('./index.html', 'utf8')
       if (body !== expected) throw Error('Something is wrong here')
       else console.log('Step 1: Looks good!')
     })

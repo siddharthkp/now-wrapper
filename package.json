@@ -4,7 +4,7 @@
   "description": "A programmatic API around now CLI",
   "main": "index.js",
   "scripts": {
-    "test": "cd test && node ../test.js"
+    "test": "cd test && node test.js"
   },
   "repository": {
     "type": "git",

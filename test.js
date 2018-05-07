@@ -35,15 +35,12 @@ const main = async () => {
   await remove(instance.url)
 
   /* test result */
-  try {
-    const { status } = await fetch(TEST_URL)
-    console.log(1)
-    // throw Error('Something is wrong here')
-    // process.exit(1)
-  } catch (error) {
-    console.log(2)
-    // if (status !== 404)
-    // console.log('Step 2: Looks good!')
+  const { status } = await fetch(TEST_URL)
+  console.log(status)
+  if (status === 404) console.log('Step 2: Looks good!')
+  else {
+    throw Error('Something is wrong here')
+    process.exit(1)
   }
 }
 

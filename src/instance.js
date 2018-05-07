@@ -6,4 +6,10 @@ const deploy = async () => {
   else return { url: result.stdout }
 }
 
-module.exports = { deploy }
+const remove = async instanceURL => {
+  const result = await run(`now rm ${instanceURL}`)
+  if (result.stderr) return { error: result.stderr }
+  else return { result: true }
+}
+
+module.exports = { deploy, remove }

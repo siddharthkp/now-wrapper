@@ -28,6 +28,15 @@ const main = async () => {
       if (body !== expected) throw Error('Something is wrong here')
       else console.log('Looks good!')
     })
+
+  /* delete instance */
+  const result = await remove(instance.url)
+  console.log(result)
+
+  /* test result */
+  const { status } = fetch(TEST_URL)
+  if (status !== 404) throw Error('Something is wrong here')
+  else console.log('Looks good!')
 }
 
 main()

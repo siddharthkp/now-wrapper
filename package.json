@@ -1,0 +1,25 @@
+{
+  "name": "now-wrapper",
+  "version": "1.0.0",
+  "description": "A programmatic API around now CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd example && node ../test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddharthkp/now-wrapper.git"
+  },
+  "keywords": [],
+  "author": "siddharthkp",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siddharthkp/now-wrapper/issues"
+  },
+  "homepage": "https://github.com/siddharthkp/now-wrapper#readme",
+  "dependencies": {
+    "execa": "0.9.0",
+    "node-fetch": "1.7.3",
+    "now": "9.2.7"
+  }
+}

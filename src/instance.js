@@ -1,7 +1,7 @@
-const exec = require('execa')
+const run = require('./command')
 
 const deploy = async () => {
-  const result = await exec.shell('now')
+  const result = await run('now')
   if (result.stderr) return { error: result.stderr }
   else return { url: result.stdout }
 }

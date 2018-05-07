@@ -25,8 +25,10 @@ const main = async () => {
     .then(res => res.text())
     .then(body => {
       const expected = fs.readFileSync('./index.html', 'utf8')
-      if (body !== expected) throw Error('Something is wrong here')
-      else console.log('Step 1: Looks good!')
+      if (body !== expected) {
+        throw Error('Something is wrong here')
+        process.exit(1)
+      } else console.log('Step 1: Looks good!')
     })
 
   /* delete instance */
@@ -34,8 +36,10 @@ const main = async () => {
 
   /* test result */
   try {
-    const { status } = await fetch(TEST_URL)
+    const result = await fetch(TEST_URL)
+    console.log(result)
     throw Error('Something is wrong here')
+    process.exit(1)
   } catch (error) {
     console.log(error)
     // if (status !== 404)

@@ -36,7 +36,6 @@ const main = async () => {
 
   /* test result */
   const { status } = await fetch(TEST_URL)
-  console.log(status)
   if (status === 404) console.log('Step 2: Looks good!')
   else {
     throw Error('Something is wrong here')

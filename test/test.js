@@ -16,26 +16,33 @@ const main = async () => {
   const deployment = await instance.deploy()
   if (deployment.error) console.error(deployment.error)
 
-  /* set alias */
-  await alias.set(deployment.url, TEST_URL)
-
   /* test result */
-  fetch(TEST_URL)
+  fetch(deployment.url)
     .then(res => res.text())
     .then(body => {
       const expected = fs.readFileSync('./index.html', 'utf8')
       if (body !== expected) {
         throw Error('Something is wrong here')
         process.exit(1)
-      } else console.log('Step 1: Looks good!')
+      } else console.log('Step 1: Correctly deployed!')
     })
+
+  /* set alias */
+  await alias.set(deployment.url, TEST_URL)
+  const deploymentURL = await alias.get(TEST_URL)
+
+  /* test result */
+  if (deploymentURL !== deployment.url) {
+    throw Error('Something is wrong here')
+    process.exit(1)
+  } else console.log('Step 2: Alias set and fetched correctly!')
 
   /* delete instance */
   await instance.remove(deployment.url)
 
   /* test result */
   const { status } = await fetch(TEST_URL)
-  if (status === 404) console.log('Step 2: Looks good!')
+  if (status === 404) console.log('Step 3: Instance deleted for good!')
   else {
     throw Error('Something is wrong here')
     process.exit(1)

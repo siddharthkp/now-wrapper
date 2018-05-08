@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A programmatic API around now CLI",
   "main": "index.js",
+  "files": ["index.js", "src"],
   "scripts": {
     "test": "cd test && node test.js"
   },

@@ -1,12 +1,9 @@
-/* bring in ava please */
-
 const { instance, alias } = require('../index')
 
 const fetch = require('node-fetch')
 const fs = require('fs')
 
 const TEST_URL = 'https://now-wrapper-testing.now.sh'
-const TEST_URL_2 = 'https://now-wrapper-testing-2.now.sh'
 
 const main = async () => {
   /* setup test */
@@ -20,7 +17,7 @@ const main = async () => {
   if (deployment.error) console.error(deployment.error)
 
   /* set alias */
-  const { url } = await alias.set(deployment.url, TEST_URL)
+  await alias.set(deployment.url, TEST_URL)
 
   /* test result */
   fetch(TEST_URL)
@@ -33,12 +30,8 @@ const main = async () => {
       } else console.log('Step 1: Looks good!')
     })
 
-  /* realias */
-
   /* delete instance */
   await instance.remove(deployment.url)
-
-  /* delete alias */
 
   /* test result */
   const { status } = await fetch(TEST_URL)

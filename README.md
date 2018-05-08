@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/siddharthkp/now-wrapper/master/art/logo.png" height="200px"/>
+  <img src="https://cdn.rawgit.com/siddharthkp/now-wrapper/master/logo.png" height="200px"/>
   <br><br>
   <b>A programmatic API around now CLI</b>
   <br><br>

@@ -29,10 +29,11 @@ const main = async () => {
 
   /* set alias */
   await alias.set(deployment.url, TEST_URL)
-  const deploymentURL = await alias.get(TEST_URL)
+  const aliasedDeployment = await alias.get('https://now-wrapper-testing.now.sh/')
 
   /* test result */
-  if (deploymentURL !== deployment.url) {
+
+  if (aliasedDeployment.url !== deployment.url) {
     throw Error('Something is wrong here')
     process.exit(1)
   } else console.log('Step 2: Alias set and fetched correctly!')

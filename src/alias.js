@@ -11,10 +11,12 @@ const get = async aliasURL => {
   if (result.stderr) return { error: result.stderr }
   else if (result.stdout) {
     // format: url.now.sh   alias.now.sh    time
-    const aliasRow = result.stdout.split('\n').filter(u => u.includes(aliasURL))[0]
-    const url = aliasRow.split('.now.sh')[0].trim()
-    info('NOW CD', `Found previous deployment instance: ${url}`)
-    resolve({ url })
+    const urlToMatch = aliasURL.replace('https://', '').replace('/', '')
+    const aliasRow = result.stdout.split('\n').filter(u => u.includes(urlToMatch))[0]
+    /* format it properly */
+    const url = 'https://' + aliasRow.split('.now.sh')[0].trim() + '.now.sh'
+
+    return { url }
   } else {
     return { error: 404 }
   }

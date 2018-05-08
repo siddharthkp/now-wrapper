@@ -9,6 +9,12 @@
 
 [![Build Status](https://travis-ci.org/siddharthkp/now-wrapper.svg?branch=master)](https://travis-ci.org/siddharthkp/now-wrapper)
 
+&nbsp;
+
+work in progress, don't use this yet
+
+<img src="https://media.giphy.com/media/3oz8xtBx06mcZWoNJm/giphy.gif" height="200px"/>
+
 #### setup
 
 1.  install

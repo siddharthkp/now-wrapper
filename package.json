@@ -1,6 +1,6 @@
 {
   "name": "now-wrapper",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A programmatic API around now CLI",
   "main": "index.js",
   "files": ["index.js", "src"],
